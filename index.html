@@ -1,0 +1,623 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para o amor da minha vida ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Georgia", serif;
+            background: #0d0610;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Fundo */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 55, 120, 0.15), transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 80, 0.12), transparent 30%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Corações */
+        .heart {
+            position: fixed;
+            bottom: -20px;
+            color: #ff4f81;
+            font-size: 18px;
+            animation: subir 8s linear infinite;
+            opacity: 0;
+            z-index: 0;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) scale(0.7);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) scale(1.4) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: aparecer 2s ease;
+        }
+
+        .small-title {
+            color: #ff7198;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 9vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #fff, #ffb3c7, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(18px, 3vw, 25px);
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .heart-big {
+            display: block;
+            font-size: 55px;
+            margin: 30px auto;
+            animation: pulsar 1.5s infinite;
+        }
+
+        @keyframes pulsar {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 15px 30px;
+            border: 1px solid #ff5c88;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            background: rgba(255, 55, 110, 0.08);
+        }
+
+        .btn:hover {
+            background: #ff3f76;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 50, 100, 0.3);
+        }
+
+        /* Seções */
+        section {
+            padding: 100px 8%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 55px);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 60px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Carta */
+        .letter {
+            max-width: 850px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: clamp(30px, 6vw, 65px);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            line-height: 2;
+            font-size: 18px;
+            color: #eee;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+        }
+
+        .signature {
+            text-align: right;
+            color: #ff7198;
+            font-size: 24px;
+            margin-top: 40px;
+        }
+
+        /* Galeria */
+        .gallery {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .photo {
+            height: 350px;
+            overflow: hidden;
+            border-radius: 20px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #170b18;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .photo:hover img {
+            transform: scale(1.08);
+        }
+
+        .photo::after {
+            content: "❤️";
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            font-size: 22px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .photo:hover::after {
+            opacity: 1;
+        }
+
+        /* Frase */
+        .quote {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                linear-gradient(rgba(13, 6, 16, 0.65), rgba(13, 6, 16, 0.9)),
+                url("foto-principal.jpg") center/cover;
+            background-attachment: fixed;
+        }
+
+        .quote-content {
+            max-width: 900px;
+        }
+
+        .quote p {
+            font-size: clamp(30px, 6vw, 65px);
+            font-style: italic;
+            line-height: 1.2;
+        }
+
+        /* Contador */
+        .counter {
+            text-align: center;
+        }
+
+        .counter-box {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 45px;
+        }
+
+        .time {
+            min-width: 130px;
+            padding: 25px 15px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .time span {
+            display: block;
+            font-size: 40px;
+            color: #ff668d;
+            font-weight: bold;
+        }
+
+        .time small {
+            color: #aaa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Final */
+        .final {
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .final h2 {
+            font-size: clamp(40px, 7vw, 75px);
+            margin-bottom: 25px;
+        }
+
+        .final p {
+            max-width: 650px;
+            color: #bbb;
+            font-size: 19px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 75px 6%;
+            }
+
+            .photo {
+                height: 300px;
+            }
+
+            .quote {
+                background-attachment: scroll;
+            }
+
+            .time {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Corações -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">♥</div>
+    <div class="heart" style="left: 25%; animation-delay: 2s;">♥</div>
+    <div class="heart" style="left: 45%; animation-delay: 4s;">♥</div>
+    <div class="heart" style="left: 65%; animation-delay: 1s;">♥</div>
+    <div class="heart" style="left: 85%; animation-delay: 3s;">♥</div>
+
+    <!-- ABERTURA -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Para a mulher da minha vida
+            </div>
+
+            <h1>
+                Meu amor,<br>
+                minha vida.
+            </h1>
+
+            <span class="heart-big">❤️</span>
+
+            <p>
+                Entre milhões de pessoas no mundo,<br>
+                eu tive a sorte de encontrar você.
+            </p>
+
+            <a href="#carta" class="btn">
+                Leia uma coisa que escrevi para você ↓
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CARTA -->
+    <section id="carta">
+
+        <h2 class="section-title">
+            Uma carta para você
+        </h2>
+
+        <p class="section-subtitle">
+            Algumas coisas que talvez eu nem consiga dizer olhando nos seus olhos...
+        </p>
+
+        <div class="letter">
+
+            <p>
+                Meu amor,
+            </p>
+
+            <p>
+                Eu poderia passar horas tentando encontrar as palavras
+                certas para explicar o que você significa para mim,
+                mas ainda assim pareceria pouco.
+            </p>
+
+            <p>
+                Desde que você entrou na minha vida, algumas coisas
+                simplesmente ficaram diferentes. Os dias ganharam mais
+                sentido, os momentos ficaram mais especiais e até as
+                pequenas coisas passaram a ter um significado enorme.
+            </p>
+
+            <p>
+                Quero que você saiba que eu amo cada detalhe seu.
+                Seu jeito, seu sorriso, sua voz, suas manias e até aquelas
+                pequenas coisas que talvez você nem perceba.
+            </p>
+
+            <p>
+                Obrigado por estar comigo, por compartilhar sua vida
+                comigo e por fazer parte da minha história.
+            </p>
+
+            <p>
+                Se eu pudesse escolher novamente, entre todas as pessoas
+                desse mundo, eu escolheria você.
+                Hoje, amanhã e em todos os dias que ainda estão por vir.
+            </p>
+
+            <div class="signature">
+                Com todo meu amor ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- GALERIA -->
+    <section>
+
+        <h2 class="section-title">
+            Nossos momentos ❤️
+        </h2>
+
+        <p class="section-subtitle">
+            Algumas lembranças da nossa história.
+        </p>
+
+        <div class="gallery">
+
+            <!-- TROQUE AS FOTOS ABAIXO -->
+
+            <div class="photo">
+                <img src="foto1.jpg" alt="Nosso momento">
+            </div>
+
+            <div class="photo">
+                <img src="foto2.jpg" alt="Nosso momento">
+            </div>
+
+            <div class="photo">
+                <img src="foto3.jpg" alt="Nosso momento">
+            </div>
+
+            <div class="photo">
+                <img src="foto4.jpg" alt="Nosso momento">
+            </div>
+
+            <div class="photo">
+                <img src="foto5.jpg" alt="Nosso momento">
+            </div>
+
+            <div class="photo">
+                <img src="foto6.jpg" alt="Nosso momento">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FRASE -->
+    <section class="quote">
+
+        <div class="quote-content">
+
+            <p>
+                "Eu não preciso de uma vida perfeita.
+                Só preciso de uma vida onde você esteja comigo."
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTADOR -->
+    <section class="counter">
+
+        <h2 class="section-title">
+            E nossa história continua...
+        </h2>
+
+        <p class="section-subtitle">
+            Cada segundo ao seu lado vale a pena.
+        </p>
+
+        <div class="counter-box">
+
+            <div class="time">
+                <span id="dias">0</span>
+                <small>DIAS</small>
+            </div>
+
+            <div class="time">
+                <span id="horas">0</span>
+                <small>HORAS</small>
+            </div>
+
+            <div class="time">
+                <span id="minutos">0</span>
+                <small>MINUTOS</small>
+            </div>
+
+            <div class="time">
+                <span id="segundos">0</span>
+                <small>SEGUNDOS</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final">
+
+        <span class="heart-big">❤️</span>
+
+        <h2>
+            Eu escolheria você<br>
+            mil vezes.
+        </h2>
+
+        <p>
+            Obrigado por ser minha companheira, meu amor e uma das
+            partes mais bonitas da minha vida.
+            Que essa seja apenas uma pequena lembrança de tudo aquilo
+            que ainda vamos viver juntos.
+        </p>
+
+    </section>
+
+
+    <footer>
+        Feito com amor ❤️
+    </footer>
+
+
+    <script>
+
+        /*
+         * ==========================================
+         * COLOQUE A DATA EM QUE VOCÊS COMEÇARAM
+         * ==========================================
+         *
+         * Exemplo:
+         * 15 de junho de 2020 às 20:00
+         *
+         * Formato:
+         * ANO, MÊS, DIA, HORA, MINUTO
+         *
+         * IMPORTANTE:
+         * Janeiro = 0
+         * Fevereiro = 1
+         * Março = 2
+         * ...
+         * Dezembro = 11
+         */
+
+        const dataInicio = new Date(2020, 5, 15, 20, 0);
+
+
+        function atualizarContador() {
+
+            const agora = new Date();
+
+            const diferenca = agora - dataInicio;
+
+            const dias = Math.floor(
+                diferenca / (1000 * 60 * 60 * 24)
+            );
+
+            const horas = Math.floor(
+                (diferenca / (1000 * 60 * 60)) % 24
+            );
+
+            const minutos = Math.floor(
+                (diferenca / (1000 * 60)) % 60
+            );
+
+            const segundos = Math.floor(
+                (diferenca / 1000) % 60
+            );
+
+            document.getElementById("dias").textContent = dias;
+            document.getElementById("horas").textContent = horas;
+            document.getElementById("minutos").textContent = minutos;
+            document.getElementById("segundos").textContent = segundos;
+        }
+
+        atualizarContador();
+
+        setInterval(atualizarContador, 1000);
+
+    </script>
+
+</body>
+</html>
+```
