@@ -340,6 +340,171 @@
                 min-width: 100px;
             }
         }
+
+        /* =====================================
+   CANTINHO DA MINHA LUA 🌙
+   ===================================== */
+
+.lua-section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(120, 130, 255, 0.15),
+        transparent 35%),
+        linear-gradient(#03040d, #08091a);
+
+    padding: 80px 20px;
+}
+
+.lua-content {
+    position: relative;
+    z-index: 5;
+    max-width: 850px;
+}
+
+.lua-small {
+    color: #aeb8ff;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.lua-title {
+    font-size: clamp(45px, 8vw, 90px);
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #cbd2ff,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lua-text {
+    font-size: clamp(18px, 3vw, 23px);
+    line-height: 1.9;
+    color: #d7d9eb;
+}
+
+.lua-heart {
+    color: #ff7198;
+}
+
+/* Lua */
+
+.moon {
+    width: 210px;
+    height: 210px;
+
+    margin: 0 auto 45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #e9ebff 45%,
+            #b8c0e8 75%,
+            #7f88b5
+        );
+
+    box-shadow:
+        0 0 30px rgba(210, 220, 255, 0.8),
+        0 0 80px rgba(120, 140, 255, 0.35),
+        0 0 150px rgba(100, 120, 255, 0.15);
+
+    cursor: pointer;
+
+    transition: 0.6s ease;
+}
+
+.moon:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 50px rgba(230, 235, 255, 1),
+        0 0 110px rgba(130, 150, 255, 0.6),
+        0 0 180px rgba(100, 120, 255, 0.3);
+}
+
+/* Estrelas */
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+    border-radius: 50%;
+
+    box-shadow: 0 0 8px white;
+
+    animation: estrela 3s infinite alternate;
+}
+
+@keyframes estrela {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+/* Mensagem escondida */
+
+.lua-secret {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+
+    margin-top: 0;
+
+    color: #ffb5ca;
+
+    font-size: 22px;
+    font-style: italic;
+
+    transition:
+        max-height 1s ease,
+        opacity 1s ease,
+        margin 1s ease;
+}
+
+.lua-secret.mostrar {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 35px;
+}
+
+.lua-hint {
+    margin-top: 30px;
+
+    color: #888da8;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
     </style>
 </head>
 
@@ -534,7 +699,83 @@
 
     </section>
 
+    <!-- =====================================
+     CANTINHO DA MINHA LUA 🌙
+     ===================================== -->
 
+<section class="lua-section">
+
+    <!-- Estrelas -->
+
+    <div class="star" style="top: 15%; left: 12%;"></div>
+    <div class="star" style="top: 25%; left: 25%; animation-delay: 1s;"></div>
+    <div class="star" style="top: 12%; left: 45%; animation-delay: 2s;"></div>
+    <div class="star" style="top: 30%; left: 70%; animation-delay: .5s;"></div>
+    <div class="star" style="top: 18%; left: 88%; animation-delay: 1.5s;"></div>
+
+    <div class="star" style="top: 65%; left: 10%; animation-delay: 2s;"></div>
+    <div class="star" style="top: 75%; left: 30%; animation-delay: .8s;"></div>
+    <div class="star" style="top: 80%; left: 55%; animation-delay: 1.7s;"></div>
+    <div class="star" style="top: 65%; left: 80%; animation-delay: .3s;"></div>
+    <div class="star" style="top: 85%; left: 92%; animation-delay: 2.5s;"></div>
+
+
+    <div class="lua-content">
+
+        <div class="lua-small">
+            Um cantinho só seu
+        </div>
+
+        <!-- CLIQUE NA LUA -->
+        <div
+            class="moon"
+            onclick="mostrarMensagemLua()"
+            title="Clique na Lua ❤️">
+        </div>
+
+        <h2 class="lua-title">
+            Minha Lua 🌙
+        </h2>
+
+        <p class="lua-text">
+
+            Dizem que a Lua ilumina a noite...
+            <br>
+
+            Mas você ilumina a minha vida.
+
+            <br><br>
+
+            Você é aquela pessoa que faz os meus dias
+            ficarem mais bonitos simplesmente por existir.
+
+            <br><br>
+
+            E se algum dia você esquecer o quanto é especial,
+            volte aqui e olhe para essa Lua.
+
+        </p>
+
+
+        <div id="mensagemLua" class="lua-secret">
+
+            Porque, em qualquer lugar desse mundo,
+            <br>
+            em qualquer noite,
+            <br>
+            <strong>eu ainda escolheria você. ❤️</strong>
+
+        </div>
+
+
+        <div class="lua-hint">
+            ✨ Clique na Lua...
+        </div>
+
+    </div>
+
+</section>
+    
     <!-- FINAL -->
     <section class="final">
 
@@ -581,7 +822,7 @@
          * Dezembro = 11
          */
 
-        const dataInicio = new Date(2020, 5, 15, 20, 0);
+        const dataInicio = new Date(2026, 8, 21, 21, 0);
 
 
         function atualizarContador() {
@@ -615,6 +856,14 @@
         atualizarContador();
 
         setInterval(atualizarContador, 1000);
+
+        function mostrarMensagemLua() {
+
+    const mensagem = document.getElementById("mensagemLua");
+
+    mensagem.classList.toggle("mostrar");
+
+}
 
     </script>
 
